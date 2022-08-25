@@ -25,7 +25,13 @@ function submit() {
     } else {
         document.getElementById("yanzhengma-danger").innerHTML = "";
     }
+    let user = {
+        userName:name,
+        pwd:pwd,
+    }
 
-
-
-    $.get("users/queryById/1",function(data){
+    $.get("/users/queryUser", user,function (data) {
+        alert(data);
+        console.log(data);
+    });
+}

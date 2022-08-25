@@ -1,11 +1,13 @@
 package controller;
 
+import com.alibaba.fastjson.JSON;
 import entity.Users;
 import kgy.service.UsersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Users)表控制层
@@ -29,7 +31,6 @@ public class UsersController {
      */
     @GetMapping("/queryAll")
     public ResponseEntity<List> queryAll() {
-        System.out.println("你好");
         return ResponseEntity.ok(this.usersService.queryAll());
     }
     
@@ -41,9 +42,15 @@ public class UsersController {
      */
     @GetMapping("/queryById/{id}")
     public ResponseEntity<Users> queryById(@PathVariable("id") Integer id) {
-        System.out.println(id+"id");
         return ResponseEntity.ok(this.usersService.queryById(id));
     }
+
+    @GetMapping("/queryUser")
+    public String queryUser(Users user) {
+        return JSON.toJSONString(this.usersService.queryUser(user));
+    }
+
+
 
     /**
      * 新增数据

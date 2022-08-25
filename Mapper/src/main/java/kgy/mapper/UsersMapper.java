@@ -78,5 +78,7 @@ public interface UsersMapper {
      */
     int deleteById(Integer id);
 
+
+    Users queryUser(Users user);
 }
 

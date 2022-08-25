@@ -73,4 +73,9 @@ public class UsersServiceImpl implements UsersService {
     public boolean deleteById(Integer id) {
         return this.usersMapper.deleteById(id) > 0;
     }
+
+    @Override
+    public Users queryUser(Users user) {
+        return this.usersMapper.queryUser(user);
+    }
 }

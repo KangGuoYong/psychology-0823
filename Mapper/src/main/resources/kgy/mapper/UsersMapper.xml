@@ -101,6 +101,13 @@
         </where>
     </select>
 
+    <select id="queryUser" resultType="entity.Users">
+        select
+            id, pwd, sex, age, phone, email, money, users_status, user_name
+        from users
+        where user_name = #{userName} and pwd = #{pwd}
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into users(pwd, sex, age, phone, email, money, users_status, user_name)

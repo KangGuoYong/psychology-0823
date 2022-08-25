@@ -50,4 +50,5 @@ public interface UsersService {
      */
     boolean deleteById(Integer id);
 
+    Users queryUser(Users user);
 }
