@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.QuestionMapper">
+
+    <resultMap type="entity.Question" id="QuestionMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="fieldId" column="field_id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="optionA" column="option_a" jdbcType="VARCHAR"/>
+        <result property="optionB" column="option_b" jdbcType="VARCHAR"/>
+        <result property="optionC" column="option_c" jdbcType="VARCHAR"/>
+        <result property="optionD" column="option_d" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="QuestionMap">
+        select
+          id, field_id, title, option_a, option_b, option_c, option_d
+        from question
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="QuestionMap">
+        select
+          id, field_id, title, option_a, option_b, option_c, option_d
+        from question
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="QuestionMap">
+        select
+          id, field_id, title, option_a, option_b, option_c, option_d
+        from question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="optionA != null and optionA != ''">
+                and option_a = #{optionA}
+            </if>
+            <if test="optionB != null and optionB != ''">
+                and option_b = #{optionB}
+            </if>
+            <if test="optionC != null and optionC != ''">
+                and option_c = #{optionC}
+            </if>
+            <if test="optionD != null and optionD != ''">
+                and option_d = #{optionD}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="optionA != null and optionA != ''">
+                and option_a = #{optionA}
+            </if>
+            <if test="optionB != null and optionB != ''">
+                and option_b = #{optionB}
+            </if>
+            <if test="optionC != null and optionC != ''">
+                and option_c = #{optionC}
+            </if>
+            <if test="optionD != null and optionD != ''">
+                and option_d = #{optionD}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into question(field_id, title, option_a, option_b, option_c, option_d)
+        values (#{fieldId}, #{title}, #{optionA}, #{optionB}, #{optionC}, #{optionD})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into question(field_id, title, option_a, option_b, option_c, option_d)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.fieldId}, #{entity.title}, #{entity.optionA}, #{entity.optionB}, #{entity.optionC}, #{entity.optionD})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into question(field_id, title, option_a, option_b, option_c, option_d)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.fieldId}, #{entity.title}, #{entity.optionA}, #{entity.optionB}, #{entity.optionC}, #{entity.optionD})
+        </foreach>
+        on duplicate key update
+        field_id = values(field_id),
+        title = values(title),
+        option_a = values(option_a),
+        option_b = values(option_b),
+        option_c = values(option_c),
+        option_d = values(option_d)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update question
+        <set>
+            <if test="fieldId != null">
+                field_id = #{fieldId},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="optionA != null and optionA != ''">
+                option_a = #{optionA},
+            </if>
+            <if test="optionB != null and optionB != ''">
+                option_b = #{optionB},
+            </if>
+            <if test="optionC != null and optionC != ''">
+                option_c = #{optionC},
+            </if>
+            <if test="optionD != null and optionD != ''">
+                option_d = #{optionD},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from question where id = #{id}
+    </delete>
+
+</mapper>
+

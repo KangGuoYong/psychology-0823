@@ -1,0 +1,175 @@
+.last{
+    margin-right: 0 !important;
+    background-image: url();
+}
+
+.mb15{
+    margin-bottom: 15px !important;
+}
+.mr15{
+    margin-right: 15px;
+}
+.mt15{
+    margin-top: 15px;
+}
+.mb5{
+    margin-bottom: 5px;
+}
+
+/* 文本 */
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+
+/* 弹性布局 */
+.flex{
+    display: flex;
+}
+
+.flex-xcenter{
+    display: flex;
+    justify-content: center;
+}
+.flex-xend{
+    display: flex;
+    justify-content: end;
+}
+
+.flex-ycenter{
+    align-items: center;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.flex-xycenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+.flex-around{
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-row2{
+    width: 48%;
+    margin-right: 2%;
+}
+
+
+/*-------- ------ */
+/* 管理员首页 */
+.full-screent{
+    position:fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 100% 100%;
+}
+/* 登录版 */
+.bang{
+    width: 500px;
+    height:500px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(207, 205, 199);
+}
+
+.admin-top{
+    height: 50px;
+    border: 1px solid #DEDEDE;
+}
+
+.admin-left{
+    width: 180px;
+    top:50px !important;
+    border: 1px solid #DEDEDE;
+  
+}
+
+.admin-right{
+    left: 180px !important;
+    top:50px !important;
+    border: 1px solid #DEDEDE;  
+    padding: 25px;
+}
+
+
+/*下边框*/
+.border-bottom{
+    border-bottom: 1px solid #DEDEDE;  
+}
+#input-user{
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #DEDEDE;
+    padding: 4px 10px;
+    font-size: 14px
+}
+#user-btn{
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    min-width: 80px;
+    height: 30px;
+    line-height: 20px;
+    padding: 4px 10px;
+    border: 1px solid #DEDEDE;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+
+/* 显示和不显示 */
+.batel-show{
+    display: block;
+}
+.batel-none{
+    display: none;
+}
+
+.pd20{
+   padding: 20px;
+}
+
+.wrapper{
+    width: 1200px;
+    margin:  0 auto;
+}
+
+textarea{
+    width: 100%;
+    height: 300px;
+}
+.box{
+    border: 1px solid  #DEDEDE;
+}
+.one-of-four{
+    width: 25%;
+}
+.one-of-one{
+    width: 100%;
+}
+.six-h{
+    height: 600px;
+}
+.text-ycenter{
+    line-height: 100%;
+}
+.input-red{
+    font-size:12px;
+    color: red;
+}

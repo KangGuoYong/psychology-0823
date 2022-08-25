@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.BucketMapper">
+
+    <resultMap type="entity.Bucket" id="BucketMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="timeBucket" column="time_bucket" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="BucketMap">
+        select
+          id, time_bucket
+        from bucket
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="BucketMap">
+        select
+          id, time_bucket
+        from bucket
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BucketMap">
+        select
+          id, time_bucket
+        from bucket
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="timeBucket != null and timeBucket != ''">
+                and time_bucket = #{timeBucket}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from bucket
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="timeBucket != null and timeBucket != ''">
+                and time_bucket = #{timeBucket}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into bucket(time_bucket)
+        values (#{timeBucket})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bucket(time_bucket)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.timeBucket})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bucket(time_bucket)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.timeBucket})
+        </foreach>
+        on duplicate key update
+        time_bucket = values(time_bucket)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update bucket
+        <set>
+            <if test="timeBucket != null and timeBucket != ''">
+                time_bucket = #{timeBucket},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from bucket where id = #{id}
+    </delete>
+
+</mapper>
+

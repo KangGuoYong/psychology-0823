@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.AppointmentMapper">
+
+    <resultMap type="entity.Appointment" id="AppointmentMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="orderNum" column="order_num" jdbcType="INTEGER"/>
+        <result property="scheduleId" column="schedule_id" jdbcType="INTEGER"/>
+        <result property="appointmentStatus" column="appointment_status" jdbcType="INTEGER"/>
+        <result property="questionDescribe" column="question_describe" jdbcType="VARCHAR"/>
+        <result property="appointmentTime" column="appointment_time" jdbcType="TIMESTAMP"/>
+        <result property="diagnoseReply" column="diagnose_reply" jdbcType="VARCHAR"/>
+        <result property="diagnoseTime" column="diagnose_time" jdbcType="TIMESTAMP"/>
+        <result property="evaluate" column="evaluate" jdbcType="VARCHAR"/>
+        <result property="evaluateTime" column="evaluate_time" jdbcType="TIMESTAMP"/>
+        <result property="counselorOkTime" column="counselor_ok_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="AppointmentMap">
+        select
+          id, order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time
+        from appointment
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="AppointmentMap">
+        select
+          id, order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time
+        from appointment
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AppointmentMap">
+        select
+          id, order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time
+        from appointment
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum}
+            </if>
+            <if test="scheduleId != null">
+                and schedule_id = #{scheduleId}
+            </if>
+            <if test="appointmentStatus != null">
+                and appointment_status = #{appointmentStatus}
+            </if>
+            <if test="questionDescribe != null and questionDescribe != ''">
+                and question_describe = #{questionDescribe}
+            </if>
+            <if test="appointmentTime != null">
+                and appointment_time = #{appointmentTime}
+            </if>
+            <if test="diagnoseReply != null and diagnoseReply != ''">
+                and diagnose_reply = #{diagnoseReply}
+            </if>
+            <if test="diagnoseTime != null">
+                and diagnose_time = #{diagnoseTime}
+            </if>
+            <if test="evaluate != null and evaluate != ''">
+                and evaluate = #{evaluate}
+            </if>
+            <if test="evaluateTime != null">
+                and evaluate_time = #{evaluateTime}
+            </if>
+            <if test="counselorOkTime != null">
+                and counselor_ok_time = #{counselorOkTime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from appointment
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum}
+            </if>
+            <if test="scheduleId != null">
+                and schedule_id = #{scheduleId}
+            </if>
+            <if test="appointmentStatus != null">
+                and appointment_status = #{appointmentStatus}
+            </if>
+            <if test="questionDescribe != null and questionDescribe != ''">
+                and question_describe = #{questionDescribe}
+            </if>
+            <if test="appointmentTime != null">
+                and appointment_time = #{appointmentTime}
+            </if>
+            <if test="diagnoseReply != null and diagnoseReply != ''">
+                and diagnose_reply = #{diagnoseReply}
+            </if>
+            <if test="diagnoseTime != null">
+                and diagnose_time = #{diagnoseTime}
+            </if>
+            <if test="evaluate != null and evaluate != ''">
+                and evaluate = #{evaluate}
+            </if>
+            <if test="evaluateTime != null">
+                and evaluate_time = #{evaluateTime}
+            </if>
+            <if test="counselorOkTime != null">
+                and counselor_ok_time = #{counselorOkTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into appointment(order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time)
+        values (#{orderNum}, #{scheduleId}, #{appointmentStatus}, #{questionDescribe}, #{appointmentTime}, #{diagnoseReply}, #{diagnoseTime}, #{evaluate}, #{evaluateTime}, #{counselorOkTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into appointment(order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.orderNum}, #{entity.scheduleId}, #{entity.appointmentStatus}, #{entity.questionDescribe}, #{entity.appointmentTime}, #{entity.diagnoseReply}, #{entity.diagnoseTime}, #{entity.evaluate}, #{entity.evaluateTime}, #{entity.counselorOkTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into appointment(order_num, schedule_id, appointment_status, question_describe, appointment_time, diagnose_reply, diagnose_time, evaluate, evaluate_time, counselor_ok_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.orderNum}, #{entity.scheduleId}, #{entity.appointmentStatus}, #{entity.questionDescribe}, #{entity.appointmentTime}, #{entity.diagnoseReply}, #{entity.diagnoseTime}, #{entity.evaluate}, #{entity.evaluateTime}, #{entity.counselorOkTime})
+        </foreach>
+        on duplicate key update
+        order_num = values(order_num),
+        schedule_id = values(schedule_id),
+        appointment_status = values(appointment_status),
+        question_describe = values(question_describe),
+        appointment_time = values(appointment_time),
+        diagnose_reply = values(diagnose_reply),
+        diagnose_time = values(diagnose_time),
+        evaluate = values(evaluate),
+        evaluate_time = values(evaluate_time),
+        counselor_ok_time = values(counselor_ok_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update appointment
+        <set>
+            <if test="orderNum != null">
+                order_num = #{orderNum},
+            </if>
+            <if test="scheduleId != null">
+                schedule_id = #{scheduleId},
+            </if>
+            <if test="appointmentStatus != null">
+                appointment_status = #{appointmentStatus},
+            </if>
+            <if test="questionDescribe != null and questionDescribe != ''">
+                question_describe = #{questionDescribe},
+            </if>
+            <if test="appointmentTime != null">
+                appointment_time = #{appointmentTime},
+            </if>
+            <if test="diagnoseReply != null and diagnoseReply != ''">
+                diagnose_reply = #{diagnoseReply},
+            </if>
+            <if test="diagnoseTime != null">
+                diagnose_time = #{diagnoseTime},
+            </if>
+            <if test="evaluate != null and evaluate != ''">
+                evaluate = #{evaluate},
+            </if>
+            <if test="evaluateTime != null">
+                evaluate_time = #{evaluateTime},
+            </if>
+            <if test="counselorOkTime != null">
+                counselor_ok_time = #{counselorOkTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from appointment where id = #{id}
+    </delete>
+
+</mapper>
+

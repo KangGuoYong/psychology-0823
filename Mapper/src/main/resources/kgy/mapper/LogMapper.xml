@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.LogMapper">
+
+    <resultMap type="entity.Log" id="LogMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="num" column="num" jdbcType="INTEGER"/>
+        <result property="operationPeople" column="operation_people" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP"/>
+        <result property="item" column="item" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="LogMap">
+        select
+          id, num, operation_people, time, item
+        from log
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="LogMap">
+        select
+          id, num, operation_people, time, item
+        from log
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="LogMap">
+        select
+          id, num, operation_people, time, item
+        from log
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="operationPeople != null and operationPeople != ''">
+                and operation_people = #{operationPeople}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="item != null and item != ''">
+                and item = #{item}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from log
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="operationPeople != null and operationPeople != ''">
+                and operation_people = #{operationPeople}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="item != null and item != ''">
+                and item = #{item}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into log(num, operation_people, time, item)
+        values (#{num}, #{operationPeople}, #{time}, #{item})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into log(num, operation_people, time, item)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.num}, #{entity.operationPeople}, #{entity.time}, #{entity.item})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into log(num, operation_people, time, item)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.num}, #{entity.operationPeople}, #{entity.time}, #{entity.item})
+        </foreach>
+        on duplicate key update
+        num = values(num),
+        operation_people = values(operation_people),
+        time = values(time),
+        item = values(item)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update log
+        <set>
+            <if test="num != null">
+                num = #{num},
+            </if>
+            <if test="operationPeople != null and operationPeople != ''">
+                operation_people = #{operationPeople},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="item != null and item != ''">
+                item = #{item},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from log where id = #{id}
+    </delete>
+
+</mapper>
+

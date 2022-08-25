@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../zui/css/zui.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/init.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="text-center">预约列表</h1>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                查询条件
+            </div>
+            <div class="panel-footer ">
+                <div class="flex-between">
+                    <div>
+                        <div class="mb15">
+                            <span>咨询师:</span>
+                            <input type="text">
+                            <span>用户:</span>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <span class="mr15">预约日期:</span>
+                            <input type="text" class="mr15">
+                            <span class="mr15">至</span>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div>
+                        <button>查询</button>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>预约时间</th>
+                    <th>心理咨询师</th>
+                    <th>领域</th>
+                    <th>用户</th>
+                    <th>完成时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2022年8月24日</td>
+                    <td>康国勇</td>
+                    <td>成人抑郁症</td>
+                    <td>康康</td>
+                    <td>2022年</td>
+                    <td>已预约</td>
+                    <td class="flex ">
+                        <div class="mr15">查看详情</div>
+                        <div>终止预约</div>
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="text-center">
+            <ul class="pager" data-ride="pager" data-page="2" data-rec-total="11"></ul>
+        </div>
+
+
+
+
+
+
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../zui/js/zui.js"></script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh_en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/adminlogin.css">
+    <link rel="stylesheet" href="../zui/css/zui.css">
+</head>
+
+<body>
+    <div class="full-screent  flex-xycenter" id="login_div">
+        <div class="bang pd20" id="reg-bang">
+            <div class="title mb5">
+                用户注册
+            </div>
+
+
+
+            <!-- 注册 -->
+
+            <div class="input-group mr15 ">
+                <span class="input-group-addon">用户名</span>
+                <input id="user-name" type="text" class="form-control" placeholder="用户名">
+            </div>
+            <span id="name-danger"></span>
+            <!-- 单选框 -->
+            <div class="flex">
+                <div class="mr15">性别:</div>
+                <div class="radio-primary mr15"><input type="radio" name="primaryRadioGroup1" id="primaryradio1"><label
+                        for="primaryradio1">男</label></div>
+                <div class="radio-primary"><input type="radio" name="primaryRadioGroup1" checked="checked"
+                        id="primaryradio2"><label for="primaryradio2">女</label></div>
+            </div>
+            <div class="input-group mb5">
+                <span class="input-group-addon">手机号</span>
+                <input id="phone" type="text" class="form-control" placeholder="手机号">
+            </div>
+            <span id="phone-danger"></span>
+            <div class="input-group mb5">
+                <span class="input-group-addon">年龄</span>
+                <input id="age" type="text" class="form-control" placeholder="年龄">
+
+            </div>
+            <span id="age-danger"></span>
+            <div class="input-group mr15 mb5">
+                <span class="input-group-addon">密 码</span>
+                <input id="pwd" type="text" class="form-control" placeholder="密码">
+            </div>
+            <span id="pwd-danger"></span>
+
+            <div class="input-group mb5">
+                <span class="input-group-addon">确认密码</span>
+                <input id="pwd2" type="text" class="form-control" placeholder="确认密码">
+
+            </div>
+            <span id="pwd2-danger"></span>
+            <div class="input-group mb5">
+                <span class="input-group-addon">通讯地址</span>
+                <input id="email" type="text" class="form-control" placeholder="通讯地址">
+
+            </div>
+            <span id="email-danger"></span>
+
+
+
+
+
+
+            <button class="btn btn-block " type="button" onclick="submit()">注 册</button>
+            <button class="btn btn-block " type="button"><a href="Login.html">返回</a></button>
+
+
+
+
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../user_js/user_reg.js"></script>
+
+
+</html>

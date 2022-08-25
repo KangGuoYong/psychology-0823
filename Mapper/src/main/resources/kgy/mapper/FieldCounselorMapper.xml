@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.FieldCounselorMapper">
+
+    <resultMap type="entity.FieldCounselor" id="FieldCounselorMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="counselorId" column="counselor_id" jdbcType="INTEGER"/>
+        <result property="fieldId" column="field_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="FieldCounselorMap">
+        select
+          id, counselor_id, field_id
+        from field_counselor
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="FieldCounselorMap">
+        select
+          id, counselor_id, field_id
+        from field_counselor
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FieldCounselorMap">
+        select
+          id, counselor_id, field_id
+        from field_counselor
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="counselorId != null">
+                and counselor_id = #{counselorId}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from field_counselor
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="counselorId != null">
+                and counselor_id = #{counselorId}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into field_counselor(counselor_id, field_id)
+        values (#{counselorId}, #{fieldId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into field_counselor(counselor_id, field_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.counselorId}, #{entity.fieldId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into field_counselor(counselor_id, field_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.counselorId}, #{entity.fieldId})
+        </foreach>
+        on duplicate key update
+        counselor_id = values(counselor_id),
+        field_id = values(field_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update field_counselor
+        <set>
+            <if test="counselorId != null">
+                counselor_id = #{counselorId},
+            </if>
+            <if test="fieldId != null">
+                field_id = #{fieldId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from field_counselor where id = #{id}
+    </delete>
+
+</mapper>
+
