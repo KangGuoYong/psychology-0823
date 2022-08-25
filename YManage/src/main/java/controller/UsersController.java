@@ -59,8 +59,8 @@ public class UsersController {
      * @return 新增结果
      */
     @PostMapping("add")
-    public ResponseEntity<Users> add(Users users) {
-        return ResponseEntity.ok(this.usersService.insert(users));
+    public String add(Users users) {
+        return JSON.toJSONString(this.usersService.insert(users));
     }
 
     /**

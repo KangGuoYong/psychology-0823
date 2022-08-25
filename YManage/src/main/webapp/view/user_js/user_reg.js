@@ -51,9 +51,18 @@ function submit() {
     } 
 
 
-    let user = new users(name,pwd,sex,age,phone,email);
+    let user ={
+        "userName": name,
+        "pwd": pwd,
+        "age": age,
+        "phone": phone,
+        "email": email
+    }
     
-
+    $.post("/users/add", user,function (data) {
+        alert(data);
+        console.log(data);
+    });
 
 }
 
