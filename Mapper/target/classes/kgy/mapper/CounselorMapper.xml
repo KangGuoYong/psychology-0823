@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.CounselorMapper">
+
+    <resultMap type="entity.Counselor" id="CounselorMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="photo" column="photo" jdbcType="VARCHAR"/>
+        <result property="counselorName" column="counselor_name" jdbcType="VARCHAR"/>
+        <result property="school" column="school" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="background" column="background" jdbcType="VARCHAR"/>
+        <result property="introduction" column="introduction" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="money" column="money" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="CounselorMap">
+        select
+          id, photo, counselor_name, school, position, background, introduction, price, money
+        from counselor
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="CounselorMap">
+        select
+          id, photo, counselor_name, school, position, background, introduction, price, money
+        from counselor
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CounselorMap">
+        select
+          id, photo, counselor_name, school, position, background, introduction, price, money
+        from counselor
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="photo != null and photo != ''">
+                and photo = #{photo}
+            </if>
+            <if test="counselorName != null and counselorName != ''">
+                and counselor_name = #{counselorName}
+            </if>
+            <if test="school != null and school != ''">
+                and school = #{school}
+            </if>
+            <if test="position != null and position != ''">
+                and position = #{position}
+            </if>
+            <if test="background != null and background != ''">
+                and background = #{background}
+            </if>
+            <if test="introduction != null and introduction != ''">
+                and introduction = #{introduction}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from counselor
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="photo != null and photo != ''">
+                and photo = #{photo}
+            </if>
+            <if test="counselorName != null and counselorName != ''">
+                and counselor_name = #{counselorName}
+            </if>
+            <if test="school != null and school != ''">
+                and school = #{school}
+            </if>
+            <if test="position != null and position != ''">
+                and position = #{position}
+            </if>
+            <if test="background != null and background != ''">
+                and background = #{background}
+            </if>
+            <if test="introduction != null and introduction != ''">
+                and introduction = #{introduction}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into counselor(photo, counselor_name, school, position, background, introduction, price, money)
+        values (#{photo}, #{counselorName}, #{school}, #{position}, #{background}, #{introduction}, #{price}, #{money})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into counselor(photo, counselor_name, school, position, background, introduction, price, money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.photo}, #{entity.counselorName}, #{entity.school}, #{entity.position}, #{entity.background}, #{entity.introduction}, #{entity.price}, #{entity.money})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into counselor(photo, counselor_name, school, position, background, introduction, price, money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.photo}, #{entity.counselorName}, #{entity.school}, #{entity.position}, #{entity.background}, #{entity.introduction}, #{entity.price}, #{entity.money})
+        </foreach>
+        on duplicate key update
+        photo = values(photo),
+        counselor_name = values(counselor_name),
+        school = values(school),
+        position = values(position),
+        background = values(background),
+        introduction = values(introduction),
+        price = values(price),
+        money = values(money)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update counselor
+        <set>
+            <if test="photo != null and photo != ''">
+                photo = #{photo},
+            </if>
+            <if test="counselorName != null and counselorName != ''">
+                counselor_name = #{counselorName},
+            </if>
+            <if test="school != null and school != ''">
+                school = #{school},
+            </if>
+            <if test="position != null and position != ''">
+                position = #{position},
+            </if>
+            <if test="background != null and background != ''">
+                background = #{background},
+            </if>
+            <if test="introduction != null and introduction != ''">
+                introduction = #{introduction},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="money != null">
+                money = #{money},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from counselor where id = #{id}
+    </delete>
+
+</mapper>
+

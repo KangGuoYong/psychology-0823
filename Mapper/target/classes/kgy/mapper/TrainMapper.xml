@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.TrainMapper">
+
+    <resultMap type="entity.Train" id="TrainMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="trainTitle" column="train_title" jdbcType="VARCHAR"/>
+        <result property="trainName" column="train_name" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP"/>
+        <result property="peopleNum" column="people_num" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="trainStatus" column="train_status" jdbcType="INTEGER"/>
+        <result property="introductioin" column="introductioin" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="TrainMap">
+        select
+          id, train_title, train_name, time, people_num, price, train_status, introductioin
+        from train
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="TrainMap">
+        select
+          id, train_title, train_name, time, people_num, price, train_status, introductioin
+        from train
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TrainMap">
+        select
+          id, train_title, train_name, time, people_num, price, train_status, introductioin
+        from train
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="trainTitle != null and trainTitle != ''">
+                and train_title = #{trainTitle}
+            </if>
+            <if test="trainName != null and trainName != ''">
+                and train_name = #{trainName}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="peopleNum != null">
+                and people_num = #{peopleNum}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="trainStatus != null">
+                and train_status = #{trainStatus}
+            </if>
+            <if test="introductioin != null and introductioin != ''">
+                and introductioin = #{introductioin}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from train
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="trainTitle != null and trainTitle != ''">
+                and train_title = #{trainTitle}
+            </if>
+            <if test="trainName != null and trainName != ''">
+                and train_name = #{trainName}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="peopleNum != null">
+                and people_num = #{peopleNum}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="trainStatus != null">
+                and train_status = #{trainStatus}
+            </if>
+            <if test="introductioin != null and introductioin != ''">
+                and introductioin = #{introductioin}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into train(train_title, train_name, time, people_num, price, train_status, introductioin)
+        values (#{trainTitle}, #{trainName}, #{time}, #{peopleNum}, #{price}, #{trainStatus}, #{introductioin})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into train(train_title, train_name, time, people_num, price, train_status, introductioin)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.trainTitle}, #{entity.trainName}, #{entity.time}, #{entity.peopleNum}, #{entity.price}, #{entity.trainStatus}, #{entity.introductioin})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into train(train_title, train_name, time, people_num, price, train_status, introductioin)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.trainTitle}, #{entity.trainName}, #{entity.time}, #{entity.peopleNum}, #{entity.price}, #{entity.trainStatus}, #{entity.introductioin})
+        </foreach>
+        on duplicate key update
+        train_title = values(train_title),
+        train_name = values(train_name),
+        time = values(time),
+        people_num = values(people_num),
+        price = values(price),
+        train_status = values(train_status),
+        introductioin = values(introductioin)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update train
+        <set>
+            <if test="trainTitle != null and trainTitle != ''">
+                train_title = #{trainTitle},
+            </if>
+            <if test="trainName != null and trainName != ''">
+                train_name = #{trainName},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="peopleNum != null">
+                people_num = #{peopleNum},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="trainStatus != null">
+                train_status = #{trainStatus},
+            </if>
+            <if test="introductioin != null and introductioin != ''">
+                introductioin = #{introductioin},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from train where id = #{id}
+    </delete>
+
+</mapper>
+

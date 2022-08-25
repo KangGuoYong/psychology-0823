@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.ParameterMapper">
+
+    <resultMap type="entity.Parameter" id="ParameterMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="keyName" column="key_name" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="valueName" column="value_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="ParameterMap">
+        select
+          id, key_name, type, value_name
+        from parameter
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="ParameterMap">
+        select
+          id, key_name, type, value_name
+        from parameter
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ParameterMap">
+        select
+          id, key_name, type, value_name
+        from parameter
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="keyName != null and keyName != ''">
+                and key_name = #{keyName}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="valueName != null and valueName != ''">
+                and value_name = #{valueName}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from parameter
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="keyName != null and keyName != ''">
+                and key_name = #{keyName}
+            </if>
+            <if test="type != null and type != ''">
+                and type = #{type}
+            </if>
+            <if test="valueName != null and valueName != ''">
+                and value_name = #{valueName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into parameter(key_name, type, value_name)
+        values (#{keyName}, #{type}, #{valueName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into parameter(key_name, type, value_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.keyName}, #{entity.type}, #{entity.valueName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into parameter(key_name, type, value_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.keyName}, #{entity.type}, #{entity.valueName})
+        </foreach>
+        on duplicate key update
+        key_name = values(key_name),
+        type = values(type),
+        value_name = values(value_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update parameter
+        <set>
+            <if test="keyName != null and keyName != ''">
+                key_name = #{keyName},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type},
+            </if>
+            <if test="valueName != null and valueName != ''">
+                value_name = #{valueName},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from parameter where id = #{id}
+    </delete>
+
+</mapper>
+

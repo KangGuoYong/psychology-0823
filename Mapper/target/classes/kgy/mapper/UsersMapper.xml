@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.UsersMapper">
+
+    <resultMap type="entity.Users" id="UsersMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="pwd" column="pwd" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="money" column="money" jdbcType="INTEGER"/>
+        <result property="usersStatus" column="users_status" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="UsersMap">
+        select
+          id, pwd, sex, age, phone, email, money, users_status, user_name
+        from users
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="UsersMap">
+        select
+          id, pwd, sex, age, phone, email, money, users_status, user_name
+        from users
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UsersMap">
+        select
+          id, pwd, sex, age, phone, email, money, users_status, user_name
+        from users
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pwd != null and pwd != ''">
+                and pwd = #{pwd}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+            <if test="usersStatus != null">
+                and users_status = #{usersStatus}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from users
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="pwd != null and pwd != ''">
+                and pwd = #{pwd}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+            <if test="usersStatus != null">
+                and users_status = #{usersStatus}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryUser" resultType="entity.Users">
+        select
+            id, pwd, sex, age, phone, email, money, users_status, user_name
+        from users
+        where user_name = #{userName} and pwd = #{pwd}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into users(pwd, sex, age, phone, email, money, users_status, user_name)
+        values (#{pwd}, #{sex}, #{age}, #{phone}, #{email}, #{money}, #{usersStatus}, #{userName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into users(pwd, sex, age, phone, email, money, users_status, user_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.pwd}, #{entity.sex}, #{entity.age}, #{entity.phone}, #{entity.email}, #{entity.money}, #{entity.usersStatus}, #{entity.userName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into users(pwd, sex, age, phone, email, money, users_status, user_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.pwd}, #{entity.sex}, #{entity.age}, #{entity.phone}, #{entity.email}, #{entity.money}, #{entity.usersStatus}, #{entity.userName})
+        </foreach>
+        on duplicate key update
+        pwd = values(pwd),
+        sex = values(sex),
+        age = values(age),
+        phone = values(phone),
+        email = values(email),
+        money = values(money),
+        users_status = values(users_status),
+        user_name = values(user_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update users
+        <set>
+            <if test="pwd != null and pwd != ''">
+                pwd = #{pwd},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="money != null">
+                money = #{money},
+            </if>
+            <if test="usersStatus != null">
+                users_status = #{usersStatus},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from users where id = #{id}
+    </delete>
+
+</mapper>
+

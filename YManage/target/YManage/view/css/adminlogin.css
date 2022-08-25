@@ -1,0 +1,32 @@
+#login_div{
+    background-image: url(../img/loginbgm.jpg);
+}
+
+
+.title{
+    margin: 0px auto;
+    font-size: 30px;
+    text-align: center;
+    color: #D0DDE2;
+}
+
+a{
+    color: #333 !important;
+}
+.title-warning{
+    height: 20px;
+    width: 100px;
+}
+#login-bang input{
+    width: 100%;
+}
+#reg-bang input{
+    width: 100%;
+}
+
+.input-group-addon{
+    width: 70px !important;
+}
+#reg-bang span{
+   width: 100px;
+}

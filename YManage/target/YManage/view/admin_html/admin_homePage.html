@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh_en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../zui/css/zui.css">
+    <link rel="stylesheet" href="../css/admin/admin_homePage.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/init.css">
+</head>
+
+<body>
+    <div class="full-screent" id="allbgi">
+        <div class="full-screent admin-top flex-between flex-ycenter pd20"  id="bgi-top">
+                <div>管理员</div>
+                <div>欢迎你,admin系统管理员</div>
+        </div>
+        <div class=" full-screent admin-left tables ">
+            <nav class="menu" data-ride="menu" style="width: 100%">
+                <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+                    <li>
+                        <a onclick="tiaozhuang('ticket.html')"><i class="icon icon-th"></i>账户管理</a>
+                        <ul>
+                            <li><a href="#">客户管理</a></li>
+                            <li><a href="#">后台用户管理</a></li>
+
+                            <!-- 咨询师 -->
+                            <li><a href="#">资金账户</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="" onclick="tiaozhuang('ticket.html')"><i class="icon icon-user"></i>业务管理</a>
+                        <ul>
+                            <li><a href="#">咨询管理</a></li>
+                            <li><a href="#">培训管理</a></li>
+                            <li><a href="#">在线评估管理</a></li>
+                            <li><a href="#">资格认证管理</a></li>
+
+                             <!-- 咨询师 -->
+                             <li><a href="#">预约时间设置</a></li>
+                            <li><a href="#">预约诊断</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon icon-time"></i>统计报表</a>
+                        <ul>
+                            <li><a href="#">用户统计</a></li>
+                            <li><a href="#">渠道量统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon icon-time"></i>系统管理</a>
+                        <ul>
+                            <li><a href="#">菜单管理</a></li>
+                            <li><a href="#">角色管理</a></li>
+                            <li><a href="#">权限管理</a></li>
+                            <li><a href="#">日志管理</a></li>
+                            <li><a href="#">参数管理</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+
+        </div>
+        <div class="full-screent admin-right " id="bgi-right">
+            <iframe src="userlist.html" frameborder="0" id="linkframe"></iframe>
+        </div>
+    </div>
+
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../zui/js/zui.js"></script>
+<script src="../js/admin.js"></script>
+
+</html>

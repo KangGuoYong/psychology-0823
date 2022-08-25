@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="controller.UsersControllerTest" time="6.786" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage\target\test-classes;E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage\target\classes;E:\00_IDEAWORK\TEST\demo\psychology-0823\Service\target\Service-1.0-SNAPSHOT.jar;E:\00_IDEAWORK\TEST\demo\psychology-0823\Mapper\target\Mapper-1.0-SNAPSHOT.jar;E:\00_IDEAWORK\TEST\demo\psychology-0823\Entity\target\Entity-1.0-SNAPSHOT.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\aspectj\aspectjweaver\1.5.3\aspectjweaver-1.5.3.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\cglib\cglib\3.3.0\cglib-3.3.0.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\ow2\asm\asm\7.1\asm-7.1.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\alibaba\fastjson\1.2.75\fastjson-1.2.75.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\github\pagehelper\pagehelper\5.3.0\pagehelper-5.3.0.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\github\jsqlparser\jsqlparser\4.2\jsqlparser-4.2.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\commons-dbcp\commons-dbcp\1.4\commons-dbcp-1.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\commons-pool\commons-pool\1.5.4\commons-pool-1.5.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\mysql\mysql-connector-java\8.0.30\mysql-connector-java-8.0.30.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\javax\servlet\jsp\jsp-api\2.2\jsp-api-2.2.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\mybatis\mybatis\3.5.10\mybatis-3.5.10.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\mybatis\mybatis-spring\2.0.7\mybatis-spring-2.0.7.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-tx\5.3.18\spring-tx-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-beans\5.3.18\spring-beans-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-core\5.3.18\spring-core-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-jcl\5.3.18\spring-jcl-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-webmvc\5.3.22\spring-webmvc-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-aop\5.3.22\spring-aop-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-context\5.3.22\spring-context-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-expression\5.3.22\spring-expression-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-web\5.3.22\spring-web-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-jdbc\5.3.22\spring-jdbc-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\data\spring-data-commons\2.3.1.RELEASE\spring-data-commons-2.3.1.RELEASE.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\slf4j\slf4j-api\1.7.26\slf4j-api-1.7.26.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\junit\junit\4.11\junit-4.11.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\AKGY\JAVA\JDK\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\KGY\AppData\Local\Temp\surefire1655748945010876726\surefirebooter340218675812723164.jar C:\Users\KGY\AppData\Local\Temp\surefire1655748945010876726 2022-08-25T16-02-42_151-jvmRun1 surefire8524377296356978052tmp surefire_04955389400457611337tmp"/>
+    <property name="surefire.test.class.path" value="E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage\target\test-classes;E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage\target\classes;E:\00_IDEAWORK\TEST\demo\psychology-0823\Service\target\Service-1.0-SNAPSHOT.jar;E:\00_IDEAWORK\TEST\demo\psychology-0823\Mapper\target\Mapper-1.0-SNAPSHOT.jar;E:\00_IDEAWORK\TEST\demo\psychology-0823\Entity\target\Entity-1.0-SNAPSHOT.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\aspectj\aspectjweaver\1.5.3\aspectjweaver-1.5.3.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\cglib\cglib\3.3.0\cglib-3.3.0.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\ow2\asm\asm\7.1\asm-7.1.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\alibaba\fastjson\1.2.75\fastjson-1.2.75.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\github\pagehelper\pagehelper\5.3.0\pagehelper-5.3.0.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\github\jsqlparser\jsqlparser\4.2\jsqlparser-4.2.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\commons-dbcp\commons-dbcp\1.4\commons-dbcp-1.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\commons-pool\commons-pool\1.5.4\commons-pool-1.5.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\mysql\mysql-connector-java\8.0.30\mysql-connector-java-8.0.30.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\javax\servlet\jsp\jsp-api\2.2\jsp-api-2.2.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\mybatis\mybatis\3.5.10\mybatis-3.5.10.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\mybatis\mybatis-spring\2.0.7\mybatis-spring-2.0.7.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-tx\5.3.18\spring-tx-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-beans\5.3.18\spring-beans-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-core\5.3.18\spring-core-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-jcl\5.3.18\spring-jcl-5.3.18.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-webmvc\5.3.22\spring-webmvc-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-aop\5.3.22\spring-aop-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-context\5.3.22\spring-context-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-expression\5.3.22\spring-expression-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-web\5.3.22\spring-web-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\spring-jdbc\5.3.22\spring-jdbc-5.3.22.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\springframework\data\spring-data-commons\2.3.1.RELEASE\spring-data-commons-2.3.1.RELEASE.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\slf4j\slf4j-api\1.7.26\slf4j-api-1.7.26.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\junit\junit\4.11\junit-4.11.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\IDEA\IDEA\IDEA\MAVEN_FILE\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\KGY"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="C:\AKGY\JAVA\JDK\jre"/>
+    <property name="basedir" value="E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\KGY\AppData\Local\Temp\surefire1655748945010876726\surefirebooter340218675812723164.jar"/>
+    <property name="sun.boot.class.path" value="C:\AKGY\JAVA\JDK\jre\lib\resources.jar;C:\AKGY\JAVA\JDK\jre\lib\rt.jar;C:\AKGY\JAVA\JDK\jre\lib\sunrsasign.jar;C:\AKGY\JAVA\JDK\jre\lib\jsse.jar;C:\AKGY\JAVA\JDK\jre\lib\jce.jar;C:\AKGY\JAVA\JDK\jre\lib\charsets.jar;C:\AKGY\JAVA\JDK\jre\lib\jfr.jar;C:\AKGY\JAVA\JDK\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_331-b09"/>
+    <property name="user.name" value="KGY"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="C:\AKGY\JAVA\JDK\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="D:\IDEA\IDEA\IDEA\MAVEN_FILE"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\KGY\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.1.4"/>
+    <property name="java.version" value="1.8.0_331"/>
+    <property name="user.dir" value="E:\00_IDEAWORK\TEST\demo\psychology-0823\YManage"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\AKGY\JAVA\JDK\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\AKGY\JAVA\JDK\bin;C:\AKGY\JAVA\JRE\bin;D:\IDEA\IDEA\IDEA\apache-tomcat-8.5.81\lib;D:\IDEA\IDEA\IDEA\apache-tomcat-8.5.81\bin;C:\AKGY\JAVA\JDK\bin;C:\AKGY\JAVA\MySQL\mysql-8.0.22-winx64\bin;C:\AKGY\PYTHON\python\Scripts;C:\AKGY\PYTHON\python;D:\IDEA\IDEA\IDEA\apache-maven-3.8.6\bin;D:\IDEA\IDEA\IDEA\Git\Git\Git\Git\cmd;C:\Users\KGY\AppData\Local\Microsoft\WindowsApps;D:\IDEA\IDEA\IDEA\IntelliJ IDEA 2022.1.4\bin;;D:\DataGrip\DataGrip\DataGrip\DataGrip 2021.3.4\bin;;C:\Program Files (x86)\Tencent\QQGameTempest\Hall.57795\;;D:\IDEA\IDEA\IDEA\Visual\install\Microsoft VS Code\bin;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.331-b09"/>
+    <property name="java.ext.dirs" value="C:\AKGY\JAVA\JDK\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="D:\IDEA\IDEA\IDEA\MAVEN_FILE"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="queryById" classname="controller.UsersControllerTest" time="6.717"/>
+  <testcase name="queryAll" classname="controller.UsersControllerTest" time="0"/>
+</testsuite>

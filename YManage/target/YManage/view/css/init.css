@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+a{
+    color: #333;
+}
+img{
+    max-width: 100%;
+}
+input{
+    padding: 0;
+    margin: 0;
+  
+}
+/*
+* 12306借鉴 
+*/
+div, form, img, ul, ol, li, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+table{
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-spacing: 0px;
+    border: 1px solid #DEDEDE;
+}
+.th-last-right{
+    border-right:0px;
+}
+.table-body-left{
+    border-right: 1px solid #DEDEDE;
+    border-top: 1px solid #DEDEDE;
+}
+.td-last-right{
+    border-right:0px;
+    border-top: 1px solid #DEDEDE;
+}
+th{
+    border-right: 1px solid #DEDEDE;
+}
+
+td{
+    border-right: 1px solid #DEDEDE;
+    border-top: 1px solid #DEDEDE;
+    text-align: left;
+}
+.tdcenter{
+    text-align: center;
+}
+
+.tdright{
+    text-align: right;
+}
+
+.td-first-left{
+    width: 60px;
+}
+

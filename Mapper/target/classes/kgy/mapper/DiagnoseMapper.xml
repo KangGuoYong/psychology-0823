@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.DiagnoseMapper">
+
+    <resultMap type="entity.Diagnose" id="DiagnoseMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="fieldId" column="field_id" jdbcType="INTEGER"/>
+        <result property="testResult" column="test_result" jdbcType="VARCHAR"/>
+        <result property="testContent" column="test_content" jdbcType="VARCHAR"/>
+        <result property="testTime" column="test_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="DiagnoseMap">
+        select
+          id, user_id, field_id, test_result, test_content, test_time
+        from diagnose
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="DiagnoseMap">
+        select
+          id, user_id, field_id, test_result, test_content, test_time
+        from diagnose
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="DiagnoseMap">
+        select
+          id, user_id, field_id, test_result, test_content, test_time
+        from diagnose
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+            <if test="testResult != null and testResult != ''">
+                and test_result = #{testResult}
+            </if>
+            <if test="testContent != null and testContent != ''">
+                and test_content = #{testContent}
+            </if>
+            <if test="testTime != null">
+                and test_time = #{testTime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from diagnose
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="fieldId != null">
+                and field_id = #{fieldId}
+            </if>
+            <if test="testResult != null and testResult != ''">
+                and test_result = #{testResult}
+            </if>
+            <if test="testContent != null and testContent != ''">
+                and test_content = #{testContent}
+            </if>
+            <if test="testTime != null">
+                and test_time = #{testTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into diagnose(user_id, field_id, test_result, test_content, test_time)
+        values (#{userId}, #{fieldId}, #{testResult}, #{testContent}, #{testTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into diagnose(user_id, field_id, test_result, test_content, test_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.userId}, #{entity.fieldId}, #{entity.testResult}, #{entity.testContent}, #{entity.testTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into diagnose(user_id, field_id, test_result, test_content, test_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.userId}, #{entity.fieldId}, #{entity.testResult}, #{entity.testContent}, #{entity.testTime})
+        </foreach>
+        on duplicate key update
+        user_id = values(user_id),
+        field_id = values(field_id),
+        test_result = values(test_result),
+        test_content = values(test_content),
+        test_time = values(test_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update diagnose
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="fieldId != null">
+                field_id = #{fieldId},
+            </if>
+            <if test="testResult != null and testResult != ''">
+                test_result = #{testResult},
+            </if>
+            <if test="testContent != null and testContent != ''">
+                test_content = #{testContent},
+            </if>
+            <if test="testTime != null">
+                test_time = #{testTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from diagnose where id = #{id}
+    </delete>
+
+</mapper>
+

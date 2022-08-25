@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kgy.mapper.FieldMapper">
+
+    <resultMap type="entity.Field" id="FieldMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="filedName" column="filed_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="queryAll" resultMap="FieldMap">
+        select
+          id, filed_name
+        from field
+    </select>
+    
+    <!--查询单个-->
+    <select id="queryById" resultMap="FieldMap">
+        select
+          id, filed_name
+        from field
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="FieldMap">
+        select
+          id, filed_name
+        from field
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="filedName != null and filedName != ''">
+                and filed_name = #{filedName}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from field
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="filedName != null and filedName != ''">
+                and filed_name = #{filedName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into field(filed_name)
+        values (#{filedName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into field(filed_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.filedName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into field(filed_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.filedName})
+        </foreach>
+        on duplicate key update
+        filed_name = values(filed_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update field
+        <set>
+            <if test="filedName != null and filedName != ''">
+                filed_name = #{filedName},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from field where id = #{id}
+    </delete>
+
+</mapper>
+
